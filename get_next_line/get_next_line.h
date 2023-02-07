@@ -6,7 +6,7 @@
 /*   By: maricarr <maricarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 19:57:06 by maricarr          #+#    #+#             */
-/*   Updated: 2023/02/06 22:21:28 by maricarr         ###   ########.fr       */
+/*   Updated: 2023/02/07 10:05:11 by maricarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void				add_to_stash(t_list **stash, char *buffer, int char_read);
 void				extract_line(t_list *stash, char **line);
 void				extract_line(t_list *stash, char **line);
 void				generate_line(char **line, t_list *stash);
-void				clean_stash(t_list **stash);
+void				clean_stash(t_list **stash, t_list *last);
 void				free_stash(t_list *stash);
 t_list				*ft_lstlast(t_list *lst);
 int					found_nl_char(t_list *stash);

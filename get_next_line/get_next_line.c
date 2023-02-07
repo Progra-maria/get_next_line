@@ -6,7 +6,7 @@
 /*   By: maricarr <maricarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 19:24:25 by maricarr          #+#    #+#             */
-/*   Updated: 2023/02/07 09:50:22 by maricarr         ###   ########.fr       */
+/*   Updated: 2023/02/07 10:15:15 by maricarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ char	*get_next_line(int fd)
 {
 	static t_list	*stash;
 	char			*line;
+	t_list			*last;
 
 	line = NULL;
 	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, &line, 0) < 0)
@@ -40,7 +41,8 @@ char	*get_next_line(int fd)
 		return (NULL);
 	}
 	extract_line(stash, &line);
-	clean_stash(&stash);
+	last = ft_lstlast(stash);
+	clean_stash(&stash, last);
 	if (line == NULL)
 		free_stash(stash);
 	return (line);
@@ -119,8 +121,6 @@ void	extract_line(t_list *stash, char **line)
 	}
 	(*line)[j] = '\0';
 }
-
-
 /**
  * It takes the last node of the stash, and if the last node 
  * has a newline character in it, it removes
@@ -131,14 +131,13 @@ void	extract_line(t_list *stash, char **line)
  * 
  * @return the number of bytes read.
  */
-void	clean_stash(t_list **stash)
+
+void	clean_stash(t_list **stash, t_list *last)
 {
-	t_list	*last;
 	t_list	*clean_node;
 	int		i;
 	int		j;
 
-	last = ft_lstlast(*stash);
 	i = ft_strlen_ch(last->content, '\n');
 	if ((ft_strlen_ch(last->content, '\0') - i) == 0)
 	{
