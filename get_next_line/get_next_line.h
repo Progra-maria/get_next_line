@@ -6,7 +6,7 @@
 /*   By: maricarr <maricarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 19:57:06 by maricarr          #+#    #+#             */
-/*   Updated: 2023/02/07 10:05:11 by maricarr         ###   ########.fr       */
+/*   Updated: 2023/02/13 13:28:26 by maricarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ typedef struct s_list
 char				*get_next_line(int fd);
 void				read_and_stash(int fd, t_list **stash);
 void				add_to_stash(t_list **stash, char *buffer, int char_read);
-void				extract_line(t_list *stash, char **line);
 void				extract_line(t_list *stash, char **line);
 void				generate_line(char **line, t_list *stash);
 void				clean_stash(t_list **stash, t_list *last);
